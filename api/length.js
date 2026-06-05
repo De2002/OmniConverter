@@ -77,15 +77,90 @@ function shell({ title, description, canonical, body, structuredData = [] }) {
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="${escapeHtml(title)}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;family=Space+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#fff7ed', 100: '#ffedd5', 200: '#fed7aa', 300: '#fdba74',
+              400: '#fb923c', 500: '#f97316', 600: '#ea580c', 700: '#c2410c',
+              800: '#9a3412', 900: '#7c2d12',
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    :root{color-scheme:light;--brand:#f97316;--brand-dark:#c2410c;--ink:#172033;--muted:#64748b;--line:#fed7aa;--soft:#fff7ed;--panel:#ffffff;--bg:#fffaf5}*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fff7ed 0,#fff 34rem);color:var(--ink);line-height:1.6}a{color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.top{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border-bottom:1px solid #ffedd5}.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px 0}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900}.mark{width:38px;height:38px;border-radius:14px;background:linear-gradient(135deg,#f97316,#fdba74);display:grid;place-items:center;color:#fff}.navlinks{display:flex;gap:16px;flex-wrap:wrap}.navlinks a{font-size:14px;color:#475569;text-decoration:none}.hero{padding:60px 0 34px}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-dark);font-weight:800;font-size:13px}h1{font-size:clamp(2.2rem,6vw,4.9rem);line-height:.98;letter-spacing:-.06em;margin:18px 0 18px}h2{font-size:clamp(1.6rem,3vw,2.35rem);line-height:1.1;letter-spacing:-.035em;margin:0 0 14px}h3{line-height:1.15}.lead{font-size:clamp(1.05rem,2vw,1.28rem);color:#475569;max-width:840px}.grid{display:grid;gap:18px}.hero-grid{grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);align-items:start}.card{background:rgba(255,255,255,.9);border:1px solid #ffedd5;border-radius:28px;box-shadow:0 24px 80px rgba(249,115,22,.12);padding:24px}.converter{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:7px;color:#334155}.field input,.field select,.search input{width:100%;border:1px solid #fdba74;border-radius:16px;padding:13px 14px;font:inherit;background:#fff}.swap{border:0;background:var(--brand);color:#fff;border-radius:16px;width:46px;height:46px;font-size:20px;cursor:pointer}.result{margin-top:16px;padding:16px;border-radius:18px;background:var(--soft);border:1px solid var(--line);font-weight:800}.section{padding:34px 0}.search{position:relative;margin:20px 0}.suggest{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border:1px solid #fed7aa;border-radius:18px;box-shadow:0 18px 50px rgba(15,23,42,.14);display:none;overflow:hidden;z-index:5}.suggest a{display:block;padding:10px 14px;text-decoration:none;border-bottom:1px solid #fff7ed}.suggest a:hover{background:#fff7ed}.stats{grid-template-columns:repeat(3,1fr);margin-top:24px}.stat{padding:18px;border:1px solid #ffedd5;border-radius:22px;background:#fff}.stat b{display:block;font-size:1.7rem;color:var(--brand-dark)}.links-grid{columns:3 260px;column-gap:20px}.unit-block{break-inside:avoid;margin:0 0 18px;padding:18px;border:1px solid #ffedd5;border-radius:22px;background:#fff}.unit-block h3{margin:0 0 8px;font-size:1rem}.unit-block a,.inline-links a{display:block;text-decoration:none;color:#475569;padding:4px 0;font-size:14px}.unit-block a:hover,.inline-links a:hover{color:var(--brand-dark);text-decoration:underline}.info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0f172a;color:#fff;border-radius:18px;padding:18px;overflow:auto}.breadcrumb{font-size:14px;color:#64748b;margin-top:18px}.breadcrumb a{color:#c2410c;text-decoration:none}.pill-row{display:flex;gap:10px;flex-wrap:wrap}.pill{padding:8px 11px;border-radius:999px;background:#fff;border:1px solid #fed7aa;text-decoration:none;color:#475569;font-size:14px}.footer{margin-top:36px;padding:30px 0;border-top:1px solid #ffedd5;color:#64748b}.error{padding:80px 0}@media(max-width:800px){.hero-grid,.converter,.info-grid,.stats{grid-template-columns:1fr}.swap{width:100%}.nav{align-items:flex-start;flex-direction:column}.links-grid{columns:1}}
+    :root{color-scheme:light;--brand:#f97316;--brand-dark:#c2410c;--ink:#172033;--muted:#64748b;--line:#fed7aa;--soft:#fff7ed;--panel:#ffffff;--bg:#fffaf5}*{box-sizing:border-box}body{margin:0;padding-top:64px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fff7ed 0,#fff 34rem);color:var(--ink);line-height:1.6}a{color:inherit}.gradient-text{background:linear-gradient(135deg,#f97316 0%,#fb923c 50%,#fdba74 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.hero{padding:60px 0 34px}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-dark);font-weight:800;font-size:13px}h1{font-size:clamp(2.2rem,6vw,4.9rem);line-height:.98;letter-spacing:-.06em;margin:18px 0 18px}h2{font-size:clamp(1.6rem,3vw,2.35rem);line-height:1.1;letter-spacing:-.035em;margin:0 0 14px}h3{line-height:1.15}.lead{font-size:clamp(1.05rem,2vw,1.28rem);color:#475569;max-width:840px}.grid{display:grid;gap:18px}.hero-grid{grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);align-items:start}.card{background:rgba(255,255,255,.9);border:1px solid #ffedd5;border-radius:28px;box-shadow:0 24px 80px rgba(249,115,22,.12);padding:24px}.converter{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:7px;color:#334155}.field input,.field select,.search input{width:100%;border:1px solid #fdba74;border-radius:16px;padding:13px 14px;font:inherit;background:#fff}.swap{border:0;background:var(--brand);color:#fff;border-radius:16px;width:46px;height:46px;font-size:20px;cursor:pointer}.result{margin-top:16px;padding:16px;border-radius:18px;background:var(--soft);border:1px solid var(--line);font-weight:800}.section{padding:34px 0}.search{position:relative;margin:20px 0}.suggest{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border:1px solid #fed7aa;border-radius:18px;box-shadow:0 18px 50px rgba(15,23,42,.14);display:none;overflow:hidden;z-index:5}.suggest a{display:block;padding:10px 14px;text-decoration:none;border-bottom:1px solid #fff7ed}.suggest a:hover{background:#fff7ed}.stats{grid-template-columns:repeat(3,1fr);margin-top:24px}.stat{padding:18px;border:1px solid #ffedd5;border-radius:22px;background:#fff}.stat b{display:block;font-size:1.7rem;color:var(--brand-dark)}.links-grid{columns:3 260px;column-gap:20px}.unit-block{break-inside:avoid;margin:0 0 18px;padding:18px;border:1px solid #ffedd5;border-radius:22px;background:#fff}.unit-block h3{margin:0 0 8px;font-size:1rem}.unit-block a,.inline-links a{display:block;text-decoration:none;color:#475569;padding:4px 0;font-size:14px}.unit-block a:hover,.inline-links a:hover{color:var(--brand-dark);text-decoration:underline}.info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0f172a;color:#fff;border-radius:18px;padding:18px;overflow:auto}.breadcrumb{font-size:14px;color:#64748b;margin-top:18px}.breadcrumb a{color:#c2410c;text-decoration:none}.pill-row{display:flex;gap:10px;flex-wrap:wrap}.pill{padding:8px 11px;border-radius:999px;background:#fff;border:1px solid #fed7aa;text-decoration:none;color:#475569;font-size:14px}.footer{margin-top:36px;padding:30px 0;border-top:1px solid #ffedd5;color:#64748b}.error{padding:80px 0}@media(max-width:800px){.hero-grid,.converter,.info-grid,.stats{grid-template-columns:1fr}.swap{width:100%}.links-grid{columns:1}}
   </style>
   ${schemas}
 </head>
-<body>
-  <header class="top"><div class="wrap nav"><a class="brand" href="/"><span class="mark">↔</span><span>Omni Converter</span></a><nav class="navlinks"><a href="/length">Length Converter</a><a href="/#converters">All converters</a><a href="/#faq">FAQ</a></nav></div></header>
+<body class="bg-white font-sans text-gray-900 antialiased">
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-orange-100 transition-all duration-300" role="navigation" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2.5 group" aria-label="Omni Converter Home">
+          <img src="https://cdn-ai.onspace.ai/onspace/project/uploads/387tjVXsepM8baiJWrdVRg/omnilogo.png" alt="Omni Converter Logo" class="w-9 h-9 object-contain rounded-xl">
+          <span class="font-display font-700 text-xl text-gray-900">Omni<span class="gradient-text">Converter</span></span>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center gap-1">
+          <a href="/#converters" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 transition-all">Converters</a>
+          <a href="/#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 transition-all">About</a>
+          <a href="/#faq" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 transition-all">FAQ</a>
+          <a href="/#blog" class="nav-link px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand-600 hover:bg-brand-50 transition-all">Guide</a>
+        </div>
+
+        <!-- CTA -->
+        <div class="flex items-center gap-3">
+          <a href="/#converters" class="hidden sm:inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all duration-200 shadow-sm hover:shadow-brand-500/30">
+            <i class="fas fa-calculator text-xs"></i>
+            All Converters
+          </a>
+          <!-- Mobile menu toggle -->
+          <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors" aria-label="Toggle menu">
+            <i class="fas fa-bars text-lg" id="mobileMenuIcon"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-orange-100 bg-white/95 backdrop-blur-md">
+      <div class="px-4 py-3 space-y-1">
+        <a href="/#converters" onclick="toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">Converters</a>
+        <a href="/#about" onclick="toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">About</a>
+        <a href="/#faq" onclick="toggleMobileMenu();" class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">FAQ</a>
+        <a href="/#blog" onclick="toggleMobileMenu();" class="w-full text-left block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-600 transition-colors">Guide</a>
+      </div>
+    </div>
+  </nav>
   ${body}
   <footer class="footer"><div class="wrap">© ${new Date().getUTCFullYear()} Omni Converter. Length conversions are rendered server-side under the independent <strong>/length</strong> subfolder.</div></footer>
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      const icon = document.getElementById('mobileMenuIcon');
+      if (!menu || !icon) return;
+      menu.classList.toggle('hidden');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    }
+  </script>
 </body>
 </html>`;
 }
