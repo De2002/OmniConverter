@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/length", "destination": "/api/length" },
+    { "source": "/length/:pair*", "destination": "/api/length?pair=:pair*" }
+  ],
+  "headers": [
+    {
+      "source": "/length/:path*",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "index, follow" }
+      ]
+    }
+  ]
+}
