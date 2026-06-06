@@ -102,7 +102,88 @@ function shell({ title, description, canonical, body, structuredData = [] }) {
     }
   </script>
   <style>
-    :root{color-scheme:light;--brand:#f97316;--brand-dark:#c2410c;--ink:#172033;--muted:#64748b;--line:#fed7aa;--soft:#fff7ed;--panel:#ffffff;--bg:#fffaf5}*{box-sizing:border-box}body{margin:0;padding-top:64px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#fff7ed 0,#fff 34rem);color:var(--ink);line-height:1.6}a{color:inherit}.gradient-text{background:linear-gradient(135deg,#f97316 0%,#fb923c 50%,#fdba74 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.hero{padding:60px 0 34px}.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--brand-dark);font-weight:800;font-size:13px}h1{font-family:'Space Grotesk',Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(2.2rem,6vw,4.9rem);font-weight:900;line-height:.98;letter-spacing:-.06em;margin:18px 0 18px}h2{font-family:'Space Grotesk',Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(1.6rem,3vw,2.35rem);font-weight:800;line-height:1.1;letter-spacing:-.035em;margin:0 0 14px}h3{font-weight:800;line-height:1.15}.lead{font-size:clamp(1.05rem,2vw,1.28rem);color:#475569;max-width:840px}.grid{display:grid;gap:18px}.hero-grid{grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);align-items:start}.card{background:rgba(255,255,255,.9);border:1px solid #ffedd5;border-radius:28px;box-shadow:0 24px 80px rgba(249,115,22,.12);padding:24px}.converter{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}.field label{display:block;font-size:13px;font-weight:800;margin-bottom:7px;color:#334155}.field input,.field select,.search input{width:100%;border:1px solid #fdba74;border-radius:16px;padding:13px 14px;font:inherit;background:#fff}.swap{border:0;background:var(--brand);color:#fff;border-radius:16px;width:46px;height:46px;font-size:20px;cursor:pointer}.result{margin-top:16px;padding:16px;border-radius:18px;background:var(--soft);border:1px solid var(--line);font-weight:800}.section{padding:34px 0}.search{position:relative;margin:20px 0}.suggest{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border:1px solid #fed7aa;border-radius:18px;box-shadow:0 18px 50px rgba(15,23,42,.14);display:none;overflow:hidden;z-index:5}.suggest a{display:block;padding:10px 14px;text-decoration:none;border-bottom:1px solid #fff7ed}.suggest a:hover{background:#fff7ed}.stats{grid-template-columns:repeat(3,1fr);margin-top:24px}.stat{padding:18px;border:1px solid #ffedd5;border-radius:22px;background:#fff}.stat b{display:block;font-size:1.7rem;color:var(--brand-dark)}.links-grid{columns:3 260px;column-gap:20px}.unit-block{break-inside:avoid;margin:0 0 18px;padding:18px;border:1px solid #ffedd5;border-radius:22px;background:#fff}.unit-block h3{margin:0 0 8px;font-size:1rem}.unit-block a,.inline-links a{display:block;text-decoration:none;color:#475569;padding:4px 0;font-size:14px}.unit-block a:hover,.inline-links a:hover{color:var(--brand-dark);text-decoration:underline}.info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0f172a;color:#fff;border-radius:18px;padding:18px;overflow:auto}.breadcrumb{font-size:14px;color:#64748b;margin-top:18px}.breadcrumb a{color:#c2410c;text-decoration:none}.pill-row{display:flex;gap:10px;flex-wrap:wrap}.pill{padding:8px 11px;border-radius:999px;background:#fff;border:1px solid #fed7aa;text-decoration:none;color:#475569;font-size:14px}.footer{margin-top:36px;padding:30px 0;border-top:1px solid #ffedd5;color:#64748b}.error{padding:80px 0}@media(max-width:800px){.hero-grid,.converter,.info-grid,.stats{grid-template-columns:1fr}.swap{width:100%}.links-grid{columns:1}}
+    :root{
+      color-scheme:light;
+      --omni-blue:#3468E7;
+      --omni-blue-dark:#2556C7;
+      --omni-green:#21B66F;
+      --omni-green-dark:#15955A;
+      --omni-orange:#FF641E;
+      --omni-orange-dark:#D94B10;
+      --ink:#172033;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --soft-line:#dbeafe;
+      --panel:#ffffff;
+      --bg:#f8fafc;
+      --success-soft:#f2fbf6;
+      --accent-soft:#fff5ef;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;padding-top:64px;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 12% 8%,rgba(52,104,231,.12),transparent 28rem),radial-gradient(circle at 88% 18%,rgba(33,182,111,.10),transparent 26rem),linear-gradient(180deg,#f8fafc 0,#fff 36rem);color:var(--ink);line-height:1.6}
+    a{color:inherit}
+    .gradient-text{background:linear-gradient(135deg,var(--omni-blue) 0%,var(--omni-green) 52%,var(--omni-orange) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:auto}
+    .hero{padding:60px 0 34px}
+    .eyebrow{display:inline-flex;gap:8px;align-items:center;padding:6px 12px;border:1px solid rgba(52,104,231,.18);border-radius:999px;background:#fff;color:var(--omni-blue-dark);font-weight:800;font-size:13px;box-shadow:0 10px 28px rgba(52,104,231,.08)}
+    h1{font-family:'Space Grotesk',Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(2.2rem,6vw,4.9rem);font-weight:900;line-height:.98;letter-spacing:-.06em;margin:18px 0 18px}
+    h2{font-family:'Space Grotesk',Inter,ui-sans-serif,system-ui,sans-serif;font-size:clamp(1.6rem,3vw,2.35rem);font-weight:800;line-height:1.1;letter-spacing:-.035em;margin:0 0 14px}
+    h3{font-weight:800;line-height:1.15}
+    .lead{font-size:clamp(1.05rem,2vw,1.28rem);color:#475569;max-width:840px}
+    .grid{display:grid;gap:18px}
+    .hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);align-items:start}
+    .card{background:rgba(255,255,255,.92);border:1px solid rgba(52,104,231,.12);border-radius:28px;box-shadow:0 24px 80px rgba(37,86,199,.12);padding:24px}
+    .converter-card{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(180deg,#fbfbfc 0%,#fff 42%,#f4fbf6 100%);border:1px solid rgba(23,32,51,.10);box-shadow:0 28px 80px rgba(15,23,42,.14);padding:28px 24px 26px}
+    .converter-card:before{content:"";position:absolute;inset:auto -20% -42% -20%;height:62%;background:linear-gradient(135deg,rgba(33,182,111,.12),rgba(52,104,231,.05));pointer-events:none}
+    .converter-panel{position:relative;z-index:1}
+    .converter-section{display:grid;gap:12px}
+    .converter-section.to-section{margin-top:8px}
+    .converter-label{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:14px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    .converter-label.to-label{color:var(--omni-green-dark)}
+    .unit-pill{letter-spacing:0;text-transform:none;font-size:13px;font-weight:800;color:#64748b;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 9px}
+    .value-box{position:relative;background:#fff;border:1px solid #dfe3ea;border-radius:10px;box-shadow:0 2px 8px rgba(15,23,42,.08);min-height:126px;display:flex;align-items:center;justify-content:center;padding:28px 18px 18px}
+    .value-box:focus-within{border-color:var(--omni-blue);box-shadow:0 0 0 4px rgba(52,104,231,.12),0 10px 26px rgba(52,104,231,.12)}
+    .value-box.result-box{border-color:#dce8d9;box-shadow:0 2px 8px rgba(21,149,90,.09)}
+    .unit-corner{position:absolute;right:18px;top:16px;color:#6f7280;font-weight:800;font-size:18px;max-width:44%;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .amount-input,.result-input{width:100%;border:0;background:transparent;outline:0;text-align:center;font-family:'Space Grotesk',Inter,sans-serif;font-size:clamp(2rem,7vw,3.25rem);font-weight:800;letter-spacing:-.04em;color:#111827;padding:10px 0 0}
+    .amount-input::placeholder{color:#a8adb7}
+    .result-input{color:#686b76}
+    .unit-name-card{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:54px;background:#fff;border:1px solid #dfe3ea;border-radius:10px;box-shadow:0 2px 8px rgba(15,23,42,.08);padding:12px 16px;font-size:clamp(1rem,2vw,1.1rem);font-weight:700;color:#111827}
+    .unit-name-card.result-unit{border-color:#dce8d9}
+    .unit-symbol-chip{flex:0 0 auto;border-radius:999px;background:#f8fafc;color:#64748b;border:1px solid #e5e7eb;padding:4px 9px;font-size:13px;font-weight:800}
+    .swap-divider{position:relative;display:flex;align-items:center;justify-content:center;margin:16px 0 6px;min-height:58px}
+    .swap-divider:before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(33,182,111,.26),transparent)}
+    .swap{position:relative;z-index:1;border:4px solid #fff;background:#fff;color:var(--omni-orange);border-radius:999px;width:66px;height:66px;font-size:28px;font-weight:900;cursor:pointer;box-shadow:0 0 0 3px var(--omni-green),0 16px 34px rgba(255,100,30,.20);transition:transform .18s ease,box-shadow .18s ease,color .18s ease}
+    .swap:hover{transform:translateY(-2px) rotate(180deg);color:var(--omni-orange-dark);box-shadow:0 0 0 3px var(--omni-orange),0 18px 38px rgba(255,100,30,.26)}
+    .result{position:relative;z-index:1;margin-top:16px;padding:16px 18px;border-radius:18px;background:linear-gradient(135deg,rgba(33,182,111,.10),rgba(52,104,231,.07));border:1px solid rgba(33,182,111,.22);font-weight:800;color:#14532d}
+    .converter-note{position:relative;z-index:1;margin:12px 2px 0;color:#64748b;font-size:13px;text-align:center}
+    .primary-action{display:inline-flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;width:100%;border:0;border-radius:14px;background:var(--omni-blue);color:#fff;text-decoration:none;font-weight:900;padding:12px 14px;box-shadow:0 16px 32px rgba(52,104,231,.22)}
+    .primary-action:hover{background:var(--omni-blue-dark)}
+    .field label{display:block;font-size:13px;font-weight:800;margin-bottom:7px;color:#334155}
+    .field input,.field select,.search input{width:100%;border:1px solid rgba(52,104,231,.28);border-radius:16px;padding:13px 14px;font:inherit;background:#fff}
+    .section{padding:34px 0}
+    .search{position:relative;margin:20px 0}
+    .suggest{position:absolute;left:0;right:0;top:calc(100% + 8px);background:#fff;border:1px solid rgba(52,104,231,.18);border-radius:18px;box-shadow:0 18px 50px rgba(15,23,42,.14);display:none;overflow:hidden;z-index:5}
+    .suggest a{display:block;padding:10px 14px;text-decoration:none;border-bottom:1px solid #eef2ff}
+    .suggest a:hover{background:#f8fafc;color:var(--omni-blue-dark)}
+    .stats{grid-template-columns:repeat(3,1fr);margin-top:24px}
+    .stat{padding:18px;border:1px solid rgba(52,104,231,.12);border-radius:22px;background:#fff}
+    .stat b{display:block;font-size:1.7rem;color:var(--omni-blue-dark)}
+    .links-grid{columns:3 260px;column-gap:20px}
+    .unit-block{break-inside:avoid;margin:0 0 18px;padding:18px;border:1px solid rgba(52,104,231,.12);border-radius:22px;background:#fff}
+    .unit-block h3{margin:0 0 8px;font-size:1rem}
+    .unit-block a,.inline-links a{display:block;text-decoration:none;color:#475569;padding:4px 0;font-size:14px}
+    .unit-block a:hover,.inline-links a:hover{color:var(--omni-blue-dark);text-decoration:underline}
+    .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .formula{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0f172a;color:#fff;border-radius:18px;padding:18px;overflow:auto}
+    .breadcrumb{font-size:14px;color:#64748b;margin-top:18px}
+    .breadcrumb a{color:var(--omni-blue-dark);text-decoration:none}
+    .pill-row{display:flex;gap:10px;flex-wrap:wrap}
+    .pill{padding:8px 11px;border-radius:999px;background:#fff;border:1px solid rgba(52,104,231,.16);text-decoration:none;color:#475569;font-size:14px}
+    .pill:hover{color:var(--omni-blue-dark);border-color:rgba(52,104,231,.35)}
+    .footer{margin-top:36px;padding:30px 0;border-top:1px solid #e5e7eb;color:#64748b}
+    .error{padding:80px 0}
+    @media(max-width:800px){.hero-grid,.info-grid,.stats{grid-template-columns:1fr}.links-grid{columns:1}.converter-card{padding:22px 16px}.value-box{min-height:112px}.swap{width:58px;height:58px;font-size:24px}}
   </style>
   ${schemas}
 </head>
@@ -166,17 +247,36 @@ function shell({ title, description, canonical, body, structuredData = [] }) {
 }
 
 function converterWidget(from, to) {
-  const options = UNITS.map((unit) => `<option value="${unit.slug}"${unit.slug === from.slug ? ' selected' : ''}>${escapeHtml(unitLabel(unit))}</option>`).join('');
-  const toOptions = UNITS.map((unit) => `<option value="${unit.slug}"${unit.slug === to.slug ? ' selected' : ''}>${escapeHtml(unitLabel(unit))}</option>`).join('');
-  return `<div class="card"><div class="converter" id="converter" data-from="${from.slug}" data-to="${to.slug}">
-    <div class="field"><label for="amount">Amount</label><input id="amount" inputmode="decimal" type="number" value="1" step="any"></div>
-    <button class="swap" id="swap" aria-label="Swap units">⇄</button>
-    <div class="field"><label for="resultBox">Result</label><input id="resultBox" readonly value="${formatNumber(conversionFactor(from, to))}"></div>
-    <div class="field"><label for="fromUnit">From</label><select id="fromUnit">${options}</select></div>
-    <span></span>
-    <div class="field"><label for="toUnit">To</label><select id="toUnit">${toOptions}</select></div>
-  </div><div class="result" id="sentence">1 ${escapeHtml(from.name)} = ${formatNumber(conversionFactor(from, to))} ${escapeHtml(to.name)}</div></div>
-  <script>const units=${JSON.stringify(UNITS)};const bySlug=Object.fromEntries(units.map(u=>[u.slug,u]));const amount=document.getElementById('amount'),fromUnit=document.getElementById('fromUnit'),toUnit=document.getElementById('toUnit'),resultBox=document.getElementById('resultBox'),sentence=document.getElementById('sentence');function fmt(v){const a=Math.abs(v);return a&& (a>=1e9||a<.000001)?v.toExponential(12).replace(/\\.0+e/,'e').replace(/(\\.\\d*?)0+e/,'$1e'):new Intl.NumberFormat('en-US',{maximumSignificantDigits:15}).format(v)}function calc(){const f=bySlug[fromUnit.value],t=bySlug[toUnit.value],n=Number(amount.value||0),r=n*f.meter/t.meter;resultBox.value=fmt(r);sentence.textContent=fmt(n)+' '+f.name+' = '+fmt(r)+' '+t.name}function go(){if(fromUnit.value!==toUnit.value) location.href='/length/'+fromUnit.value+'-to-'+toUnit.value}amount.addEventListener('input',calc);fromUnit.addEventListener('change',go);toUnit.addEventListener('change',go);document.getElementById('swap').addEventListener('click',()=>{location.href='/length/'+toUnit.value+'-to-'+fromUnit.value});</script>`;
+  const factor = conversionFactor(from, to);
+  const fromTitle = toTitle(from.name);
+  const toTitleText = toTitle(to.name);
+  const fromSymbol = from.symbol || from.slug;
+  const toSymbol = to.symbol || to.slug;
+  return `<div class="converter-card" aria-label="${escapeHtml(fromTitle)} to ${escapeHtml(toTitleText)} converter">
+    <div class="converter-panel" id="converter" data-factor="${factor}" data-from-name="${escapeHtml(from.name)}" data-to-name="${escapeHtml(to.name)}">
+      <section class="converter-section" aria-labelledby="fromLabel">
+        <div class="converter-label" id="fromLabel"><span>From</span><span class="unit-pill">${escapeHtml(fromSymbol)}</span></div>
+        <label class="value-box" for="amount">
+          <span class="unit-corner">${escapeHtml(fromSymbol)}</span>
+          <input class="amount-input" id="amount" inputmode="decimal" type="number" value="1" step="any" aria-label="${escapeHtml(fromTitle)} amount">
+        </label>
+        <div class="unit-name-card"><span>${escapeHtml(fromTitle)}</span><span class="unit-symbol-chip">${escapeHtml(fromSymbol)}</span></div>
+      </section>
+      <div class="swap-divider"><button class="swap" id="swap" aria-label="Open the reverse ${escapeHtml(toTitleText)} to ${escapeHtml(fromTitle)} converter">⇅</button></div>
+      <section class="converter-section to-section" aria-labelledby="toLabel">
+        <div class="converter-label to-label" id="toLabel"><span>To</span><span class="unit-pill">${escapeHtml(toSymbol)}</span></div>
+        <label class="value-box result-box" for="resultBox">
+          <span class="unit-corner">${escapeHtml(toSymbol)}</span>
+          <input class="result-input" id="resultBox" readonly value="${formatNumber(factor)}" aria-label="${escapeHtml(toTitleText)} result">
+        </label>
+        <div class="unit-name-card result-unit"><span>${escapeHtml(toTitleText)}</span><span class="unit-symbol-chip">${escapeHtml(toSymbol)}</span></div>
+      </section>
+    </div>
+    <div class="result" id="sentence">1 ${escapeHtml(from.name)} = ${formatNumber(factor)} ${escapeHtml(to.name)}</div>
+    <p class="converter-note">This page is fixed to this conversion pair, so there are no unit selectors—just enter your ${escapeHtml(from.name)} value.</p>
+    <a class="primary-action" href="${pairPath(to, from)}"><i class="fas fa-right-left"></i> Convert ${escapeHtml(toTitleText)} to ${escapeHtml(fromTitle)}</a>
+  </div>
+  <script>(function(){const converter=document.getElementById('converter'),amount=document.getElementById('amount'),resultBox=document.getElementById('resultBox'),sentence=document.getElementById('sentence'),swap=document.getElementById('swap');if(!converter||!amount||!resultBox||!sentence)return;const factor=Number(converter.dataset.factor),fromName=converter.dataset.fromName,toName=converter.dataset.toName;function fmt(v){const a=Math.abs(v);return a&& (a>=1e9||a<.000001)?v.toExponential(12).replace(/\\.0+e/,'e').replace(/(\\.\\d*?)0+e/,'$1e'):new Intl.NumberFormat('en-US',{maximumSignificantDigits:15}).format(v)}function calc(){const raw=amount.value;if(raw===''){resultBox.value='';sentence.textContent='Enter a value to convert '+fromName+' to '+toName;return}const n=Number(raw),r=n*factor;resultBox.value=Number.isFinite(r)?fmt(r):'';sentence.textContent=Number.isFinite(r)?fmt(n)+' '+fromName+' = '+fmt(r)+' '+toName:'Enter a valid number to convert'}amount.addEventListener('input',calc);if(swap)swap.addEventListener('click',()=>{location.href='${pairPath(to, from)}'});})();</script>`;
 }
 
 function landingPage() {
