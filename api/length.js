@@ -438,36 +438,34 @@ function landingPage() {
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/">Omni Converter</a> <span style="margin:0 5px;color:#cbd5e1">›</span> <span>Length Converter</span>
       </nav>
-      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.5fr);gap:32px;align-items:start;margin-top:20px">
-        <div>
-          <h1>Length <span class="gradient-text">Converter</span></h1>
-          <p class="lead" style="margin:12px 0 20px;max-width:560px">Convert between ${UNITS.length} length and distance units — metric, imperial, nautical, astronomical, and historical. Select your units below or search for a specific pair.</p>
+      <div style="max-width:640px">
+        <h1>Length <span class="gradient-text">Converter</span></h1>
+        <p class="lead" style="margin:12px 0 20px">Convert between ${UNITS.length} length and distance units — metric, imperial, nautical, astronomical, and historical. Select your units below or search for a specific pair.</p>
 
-          <!-- Search -->
-          <div class="search-wrap" style="margin-bottom:16px">
-            <i class="fas fa-search search-icon" aria-hidden="true"></i>
-            <input id="lSearch" type="search" placeholder="Search units, e.g. 'feet to metres' or 'light year'" autocomplete="off" aria-label="Search length conversion pairs">
-            <div class="suggest" id="lSuggest" role="listbox"></div>
-          </div>
-
-          <!-- Popular conversions -->
-          <div style="margin-bottom:20px">
-            <p style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:8px">Popular conversions</p>
-            <div class="pill-wrap">${popularPairs}</div>
-          </div>
-
-          <!-- Stats -->
-          <div class="stat-row">
-            <div class="stat-item"><b>${UNITS.length}</b><span>Length units</span></div>
-            <div class="stat-item"><b>${PAIR_COUNT.toLocaleString('en-US')}</b><span>Conversion pairs</span></div>
-            <div class="stat-item"><b>Free</b><span>No sign-up</span></div>
-          </div>
+        <!-- Search -->
+        <div class="search-wrap" style="margin-bottom:16px">
+          <i class="fas fa-search search-icon" aria-hidden="true"></i>
+          <input id="lSearch" type="search" placeholder="Search units, e.g. 'feet to metres' or 'light year'" autocomplete="off" aria-label="Search length conversion pairs">
+          <div class="suggest" id="lSuggest" role="listbox"></div>
         </div>
 
-        <!-- Converter widget -->
-        <div style="position:sticky;top:80px">
-          ${converterWidget(UNIT_BY_SLUG.meter, UNIT_BY_SLUG.kilometer)}
+        <!-- Popular conversions -->
+        <div style="margin-bottom:20px">
+          <p style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:8px">Popular conversions</p>
+          <div class="pill-wrap">${popularPairs}</div>
         </div>
+
+        <!-- Stats -->
+        <div class="stat-row" style="margin-bottom:28px">
+          <div class="stat-item"><b>${UNITS.length}</b><span>Length units</span></div>
+          <div class="stat-item"><b>${PAIR_COUNT.toLocaleString('en-US')}</b><span>Conversion pairs</span></div>
+          <div class="stat-item"><b>Free</b><span>No sign-up</span></div>
+        </div>
+      </div>
+
+      <!-- Converter widget — full width below hero text -->
+      <div style="max-width:520px">
+        ${converterWidget(UNIT_BY_SLUG.meter, UNIT_BY_SLUG.kilometer)}
       </div>
     </div>
   </section>
@@ -614,39 +612,35 @@ function pairPage(from, to) {
   <!-- HERO + CONVERTER -->
   <section class="hero" style="background:linear-gradient(180deg,#fff7ed 0,#fff 80%)">
     <div class="wrap">
-      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.48fr);gap:32px;align-items:start">
-        <div>
-          <h1>Convert <span class="gradient-text">${escapeHtml(titleFrom)}</span> to ${escapeHtml(titleTo)}</h1>
-          <p class="lead" style="margin:12px 0 18px;max-width:520px">
-            Enter a value in ${escapeHtml(titleFrom)}${from.symbol ? ` (${escapeHtml(from.symbol)})` : ''} and instantly see the result in ${escapeHtml(titleTo)}${to.symbol ? ` (${escapeHtml(to.symbol)})` : ''}.
-            <strong>1 ${escapeHtml(from.name)} = ${formatNumber(factor)} ${escapeHtml(to.name)}.</strong>
-          </p>
+      <div style="max-width:680px">
+        <h1>Convert <span class="gradient-text">${escapeHtml(titleFrom)}</span> to ${escapeHtml(titleTo)}</h1>
+        <p class="lead" style="margin:12px 0 18px">
+          Enter a value in ${escapeHtml(titleFrom)}${from.symbol ? ` (${escapeHtml(from.symbol)})` : ''} and instantly see the result in ${escapeHtml(titleTo)}${to.symbol ? ` (${escapeHtml(to.symbol)})` : ''}.
+          <strong>1 ${escapeHtml(from.name)} = ${formatNumber(factor)} ${escapeHtml(to.name)}.</strong>
+        </p>
 
-          <!-- Key fact cards -->
-          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px">
-            <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:140px">
-              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">1 ${escapeHtml(from.symbol||titleFrom)} equals</div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:var(--brand-dk)">${formatNumber(factor)} <span style="font-size:.9rem;font-weight:600;color:#64748b">${escapeHtml(to.symbol||titleTo)}</span></div>
-            </div>
-            <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:140px">
-              <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">Reverse: 1 ${escapeHtml(to.symbol||titleTo)} equals</div>
-              <div style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:var(--brand-dk)">${formatNumber(reverse)} <span style="font-size:.9rem;font-weight:600;color:#64748b">${escapeHtml(from.symbol||titleFrom)}</span></div>
-            </div>
+        <!-- Key fact cards -->
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+          <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:140px">
+            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">1 ${escapeHtml(from.symbol||titleFrom)} equals</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:var(--brand-dk)">${formatNumber(factor)} <span style="font-size:.9rem;font-weight:600;color:#64748b">${escapeHtml(to.symbol||titleTo)}</span></div>
           </div>
-
-          <!-- Examples -->
-          <div style="background:#fff;border:1px solid #f1f5f9;border-radius:14px;padding:14px 18px">
-            <p style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:8px">Quick examples</p>
-            <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.875rem;color:#374151">${examples}</ul>
+          <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:140px">
+            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">Reverse: 1 ${escapeHtml(to.symbol||titleTo)} equals</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:var(--brand-dk)">${formatNumber(reverse)} <span style="font-size:.9rem;font-weight:600;color:#64748b">${escapeHtml(from.symbol||titleFrom)}</span></div>
           </div>
         </div>
 
-        <!-- Pair converter widget -->
-        <div style="position:sticky;top:80px">
-          ${pairConverterWidget(from, to)}
-          <p style="font-size:.75rem;color:#94a3b8;text-align:center;margin-top:8px">
-            <a href="${pairPath(to, from)}" style="color:var(--brand-dk)">Reverse: ${escapeHtml(titleTo)} to ${escapeHtml(titleFrom)} →</a>
-          </p>
+        <!-- Pair converter widget — full width below heading -->
+        ${pairConverterWidget(from, to)}
+        <p style="font-size:.75rem;color:#94a3b8;text-align:center;margin-top:8px">
+          <a href="${pairPath(to, from)}" style="color:var(--brand-dk)">Reverse: ${escapeHtml(titleTo)} to ${escapeHtml(titleFrom)} →</a>
+        </p>
+
+        <!-- Examples -->
+        <div style="background:#fff;border:1px solid #f1f5f9;border-radius:14px;padding:14px 18px;margin-top:16px">
+          <p style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:8px">Quick examples</p>
+          <ul style="list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;font-size:.875rem;color:#374151">${examples}</ul>
         </div>
       </div>
     </div>
