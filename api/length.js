@@ -233,7 +233,7 @@ function shell({ title, description, canonical, body, structuredData = [] }) {
         <a href="/">Home</a>
         <a href="/length">Length</a>
       </div>
-      <a href="/length" class="nav-cta"><i class="fas fa-ruler-horizontal" style="font-size:.75rem"></i> Length Converter</a>
+
     </div>
   </nav>
   ${body}
@@ -621,13 +621,13 @@ function pairPage(from, to) {
 
         <!-- Key fact cards -->
         <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px">
-          <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:140px">
-            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">1 ${escapeHtml(from.symbol||titleFrom)} equals</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:var(--brand-dk)">${formatNumber(factor)} <span style="font-size:.9rem;font-weight:600;color:#64748b">${escapeHtml(to.symbol||titleTo)}</span></div>
+          <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:0;overflow:hidden">
+            <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">1 ${escapeHtml(from.symbol||titleFrom)} equals</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:var(--brand-dk);word-break:break-all;overflow-wrap:anywhere;line-height:1.3">${formatNumber(factor)} <span style="font-size:.85rem;font-weight:600;color:#64748b">${escapeHtml(to.symbol||titleTo)}</span></div>
           </div>
-          <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:140px">
-            <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">Reverse: 1 ${escapeHtml(to.symbol||titleTo)} equals</div>
-            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:800;color:var(--brand-dk)">${formatNumber(reverse)} <span style="font-size:.9rem;font-weight:600;color:#64748b">${escapeHtml(from.symbol||titleFrom)}</span></div>
+          <div style="background:#fff;border:1px solid #ffedd5;border-radius:12px;padding:12px 16px;flex:1;min-width:0;overflow:hidden">
+            <div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:4px">Reverse: 1 ${escapeHtml(to.symbol||titleTo)} equals</div>
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:800;color:var(--brand-dk);word-break:break-all;overflow-wrap:anywhere;line-height:1.3">${formatNumber(reverse)} <span style="font-size:.85rem;font-weight:600;color:#64748b">${escapeHtml(from.symbol||titleFrom)}</span></div>
           </div>
         </div>
 
